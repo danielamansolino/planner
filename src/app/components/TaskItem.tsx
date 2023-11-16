@@ -11,9 +11,11 @@ const TaskItem:React.FC<TaskItemProps> = ({text, date, complete}) => {
 
 return(
     <>
-        <li className="flex justify-center border-2 border-red-100 m-3">
-            <div>{text}</div>
-            <div>{date}</div>
+        <li className="flex justify-between border-2 border-pink-100 m-3">
+        <div className="flex justify-between ">
+          <div style={{ marginRight: '20px' }}>Task: {text}</div>
+          <div  style={{ marginRight: '20px' }}>Date: {date}</div>
+        </div>
             <input type="checkbox" checked={complete}></input>
         </li>
     </>

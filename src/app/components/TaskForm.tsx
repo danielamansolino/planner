@@ -28,24 +28,33 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex  flex-col items-center">
         <input
           className="taskText text-black"
           type="text"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           placeholder="Enter task"
-        />
-        <br />
+        />  <br />
         <input
           className="date text-black"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           placeholder="Select a date"
-        />
-        <br />
-        <button type="submit">Add task</button>
+        />  <br />
+        <button
+          type="submit"
+          style={{
+            backgroundColor: "#a7d2ff",
+            color: "#002b59",
+            padding: "10px 15px",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Add task
+        </button>
       </form>
     </>
   );
