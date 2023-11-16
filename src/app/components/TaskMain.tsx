@@ -3,34 +3,50 @@
 import React, { useState, useEffect } from 'react'
 import TaskList from './TaskList'
 import TaskForm from './TaskForm'
-import { itemSetter } from "../../utilities/localStorage-utility";
 import { itemGetter } from "../../utilities/localStorage-utility";
+import { itemSetter } from "../../utilities/localStorage-utility";
 
+
+interface ObjectType {
+    text: string;
+    date: string;
+    complete: boolean;
+    creationDate: string;
+}
+// { text: string, date: string, complete: boolean, creationDate: string; }
 
 const TaskMain:React.FC = () => {
-    const [tasks,setTasks] = useState<{ text: string, date: string, complete: boolean }[]>([]);
+    const [tasks, setTasks] = useState<ObjectType[]>([]);
    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                let storedTasks = itemGetter("user")
+                let storedTasks = itemGetter("user");
                 if (storedTasks == null){
                     // pass
                 } else{
-                    setTasks(storedTasks)
+                    setTasks(storedTasks);
                 }
             } catch (err) {
-                console.error("Error fetching data: ", err)
+                console.error("Error fetching data: ", err);
             }
         } 
-        console.log(tasks)
-
         fetchData();
     }, [])
+
+    useEffect(() => {
+        const updateData = async () => {
+            try {
+                itemSetter("user", { array: tasks })
+            } catch (err) {
+                console.error("Error saving data: ", err);
+            }
+        }
+        updateData();
+    }, [tasks])
   
-    const addTask = (text: string, date: string) => {
-        const newTask = {text, date, complete: false };
-        setTasks([...tasks, newTask]);
+    const addTask = (data: ObjectType) => {
+        setTasks([...tasks, data]);
     }
 
     const toggleComplete = (index: number) => {

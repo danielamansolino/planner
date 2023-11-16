@@ -1,37 +1,36 @@
 "use client"; 
 
-
 import React, { useState } from "react";
 import { itemSetter } from "../../utilities/localStorage-utility";
 
-
 interface TaskFormProps {
-    tasks: ObjectType[];
-    onTaskAdd: (task: string, date: string) => void;
+    onTaskAdd: (data: ObjectType) => void;
 }
 
 interface ObjectType {
     text: string;
-    date: string | Date;
+    date: string;
     complete: boolean;
+    creationDate: string;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({  onTaskAdd }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const [task, setTask] = useState<string>("");
     const [date, setDate] = useState<string>("");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (task.trim() === "" || date === "") return;
-
+        const creationDateTime = new Date()
+        const creationDateTimeStr = creationDateTime.toISOString()
         const data = {
-            task: task,
+            text: task,
             date: date,
+            complete: false,
+            creationDate: creationDateTimeStr
         };
 
-        itemSetter("user", data)
-
-        onTaskAdd(task, date);
+        onTaskAdd(data);
         // setTask("");
         // setDate("");
     
@@ -40,7 +39,6 @@ const TaskForm: React.FC<TaskFormProps> = ({  onTaskAdd }) => {
     return (
         <>
             <form onSubmit={handleSubmit} className="flex  flex-col items-center">
-
                 <input
                 className="taskText text-black"
                 type="text"

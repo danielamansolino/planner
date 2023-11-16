@@ -10,12 +10,12 @@ interface TaskListProps {
 
 interface ObjectType {
     text: string;
-    date: string | Date;
+    date: string;
     complete: boolean;
+    creationDate: string;
 }
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
-    console.log(tasks)
     return (
         <ul>
             {tasks.map((task, index) => (

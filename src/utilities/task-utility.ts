@@ -8,7 +8,7 @@ interface InputArray {
 
 interface ObjectType {
     text: string;
-    date: string | Date;
+    date: string;
     complete: boolean;
     creationDate: string;
 }
