@@ -6,10 +6,8 @@ import TaskForm from './TaskForm'
 
 
 const TaskMain:React.FC = () => {
-    // This is the original code, which was commented out to test the dummy demo. 
-    const [tasks,setTasks] = useState<{ text: string, date: string, complete: boolean }[]>([]);
-    // const [tasks, setTasks] = useState<{ text: string, date: string, complete: boolean }[]>(demo);
-
+  const [tasks,setTasks] = useState<{ text: string, date: string, complete: boolean }[]>([]);
+    
   const addTask = (text: string, date: string) => {
     const newTask = {text, date, complete: false };
     setTasks([...tasks, newTask]);
