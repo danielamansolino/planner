@@ -40,6 +40,7 @@ const TaskForm: React.FC<TaskFormProps> = ({  onTaskAdd }) => {
     return (
         <>
             <form onSubmit={handleSubmit} className="flex  flex-col items-center">
+
                 <input
                 className="taskText text-black"
                 type="text"
