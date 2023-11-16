@@ -55,8 +55,8 @@ const TaskMain:React.FC = () => {
 
     return(
         <>
-                <TaskForm onTaskAdd={addTask} />
-                <TaskList tasks={tasks} onCompleteToggle={toggleComplete} />
+            <TaskForm onTaskAdd={addTask} />
+            <TaskList tasks={tasks} onCompleteToggle={toggleComplete} />
         </>
     )
 }
