@@ -13,12 +13,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     e.preventDefault();
     if (task.trim() === "" || date === "") return;
 
-    const data = {
-      task: task,
-      date: date,
-    };
+    // const data = {
+    //   task: task,
+    //   date: date,
+    // };
 
-    itemSetter(0, data)
+    // itemSetter(0, data)
 
     onTaskAdd(task, date);
     setTask("");
