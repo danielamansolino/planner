@@ -1,7 +1,0 @@
-
-
-
-const itemSetter = () => {
-
-    localStorage.setItem()
-}

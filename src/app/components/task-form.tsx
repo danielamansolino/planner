@@ -31,5 +31,3 @@ const TaskForm: React.FC = () => {
         </>    
     );
 }
-
-export default TaskForm;
