@@ -14,18 +14,19 @@ const TaskForm: React.FC = () => {
         setDate("");
         setComplete("");
     }
-
+ //hey !!! 
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <input 
-                class="taskText" 
+                className="taskText" 
                 type="text" 
                 value={task}
-                onChange={()}
-                >
+                onChange={(e) => setTask(e.target.value)}
+                placeholder= "Add a task"
+                />
                 // tsc -v zsh: command not found: tsc
-                </input>
+                <input/>
             </form>
         </>    
     );
