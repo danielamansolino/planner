@@ -25,13 +25,12 @@ export const itemSetter = (key: StorageKey, data: ObjectArray) => {
 export const itemGetter = (key: StorageKey) => {
     try {
         const serializedData = localStorage.getItem(key);
+        console.log(serializedData)
         if (serializedData === null) {
+            console.log("null")
             return null;
         }
-        //return objectToArray(JSON.parse(serializedData));
-        //const array = [JSON.parse(serializedData)]
         return objectToArray(JSON.parse(serializedData))
-        //return JSON.parse(serializedData);
     } catch (err) {
         console.error(`Error retrieving data from local storage (${key}):`, err);
         return null;

@@ -22,11 +22,9 @@ const TaskMain:React.FC = () => {
         const fetchData = async () => {
             try {
                 let storedTasks = itemGetter("user");
-                if (storedTasks == null){
-                    // pass
-                } else{
+                if (storedTasks != null){
                     setTasks(storedTasks);
-                }
+                } 
             } catch (err) {
                 console.error("Error fetching data: ", err);
             }

@@ -24,7 +24,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
                 text={task.text}
                 date={task.date}
                 complete={task.complete}
-                onToggle={() => onCompleteToggle(index)}
+                onCompleteToggle={() => onCompleteToggle(index)}
                 />
             ))}
         </ul>

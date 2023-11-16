@@ -4,10 +4,10 @@ interface TaskItemProps {
     text: string;
     date: string;
     complete: boolean;
-    onToggle: () => void;
+    onCompleteToggle: () => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onToggle }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onCompleteToggle }) => {
     return (
         <li className="flex justify-between border-2 border-pink-100 m-3">
             <div className="flex justify-between ">
@@ -15,7 +15,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onToggle }) =
                 <div style={{ marginRight: '20px' }}>Date: {date}</div>
             </div>
             <div>Completed: 
-                <input type="checkbox" checked={complete} onChange={onToggle}/>
+                <input type="checkbox" checked={complete} onChange={onCompleteToggle}/>
             </div> 
         </li>
     );
