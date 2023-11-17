@@ -1,19 +1,14 @@
 "use client"; 
 
 import React, { useState } from "react";
-import { itemSetter } from "../../utilities/localStorage-utility";
 import TextAreaResize from "./TextAreaResize";
+import { ObjectType } from "../../utilities/task-utility"
 
 interface TaskFormProps {
     onTaskAdd: (data: ObjectType) => void;
 }
 
-interface ObjectType {
-    text: string;
-    date: string;
-    complete: boolean;
-    creationDate: string;
-}
+
 
 const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const [task, setTask] = useState<string>("");
@@ -22,8 +17,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (task.trim() === "" || date === "") return;
-        const creationDateTime = new Date()
-        const creationDateTimeStr = creationDateTime.toISOString()
+        const creationDateTime = new Date();
+        const creationDateTimeStr = creationDateTime.toISOString();
         const data = {
             text: task,
             date: date,
@@ -31,7 +26,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
             creationDate: creationDateTimeStr
         };
         onTaskAdd(data);
-        setTask("")
+        setTask("");
     };
 
     return (

@@ -2,17 +2,11 @@
 
 import React from 'react';
 import TaskItem from './TaskItem';
+import { ObjectType } from "../../utilities/task-utility"
 
 interface TaskListProps {
     tasks: ObjectType[];
      onCompleteToggle: (index: number) => void;
-}
-
-interface ObjectType {
-    text: string;
-    date: string;
-    complete: boolean;
-    creationDate: string;
 }
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {

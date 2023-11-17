@@ -1,12 +1,12 @@
-interface InputObject {
+export interface InputObject {
     [key: string]: ObjectType;
-}
+};
 
-interface InputArray {
+export interface ObjectArray {
     array: ObjectType[];
 }
 
-interface ObjectType {
+export interface ObjectType {
     text: string;
     date: string;
     complete: boolean;
@@ -15,10 +15,10 @@ interface ObjectType {
 
 /**
  * Converts an array of ObjectType to an object with creationDate as keys.
- * @param {InputArray} data - The input array containing ObjectType elements.
+ * @param {ObjectArray} data - The input array containing ObjectType elements.
  * @returns {Object} An object with creationDate as keys and corresponding ObjectType as values.
  */
-export const arrayToObject = (data:InputArray) => {
+export const arrayToObject = (data:ObjectArray) => {
     let outputObject: {[key: string]: ObjectType} = {};
     for (const d of data.array){
         const key = d.creationDate;

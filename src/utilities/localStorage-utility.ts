@@ -1,15 +1,5 @@
 import { objectToArray, arrayToObject } from "./task-utility";
-
-interface ObjectArray{
-    array: ObjectType[];
-}
-
-interface ObjectType {
-    text: string;
-    date: string;
-    complete: boolean;
-    creationDate: string;
-}
+import { ObjectArray } from "./task-utility"
 
 type StorageKey = "tasks" | "user" | "otherKey";
   

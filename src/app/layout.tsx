@@ -21,4 +21,4 @@ export default function RootLayout({
             <body className={quicksand.className}>{children}</body>
           </html>
         )
-    }
+}

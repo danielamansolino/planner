@@ -5,13 +5,8 @@ import TaskList from './TaskList'
 import TaskForm from './TaskForm'
 import { itemGetter } from "../../utilities/localStorage-utility";
 import { itemSetter } from "../../utilities/localStorage-utility";
+import { ObjectType } from "../../utilities/task-utility"
 
-interface ObjectType {
-    text: string;
-    date: string;
-    complete: boolean;
-    creationDate: string;
-}
 // { text: string, date: string, complete: boolean, creationDate: string; }
 
 const TaskMain:React.FC = () => {
@@ -46,10 +41,12 @@ const TaskMain:React.FC = () => {
         updateData();
     }, [tasks])
   
+    // addTask() adds a new tak to the 'task' state.
     const addTask = (data: ObjectType) => {
         setTasks([...tasks, data]);
     }
 
+    // toggleComplete() updates the 'complete' field of the 'task' state as true or false. 
     const toggleComplete = (index: number) => {
         const updatedTask = [...tasks];
         updatedTask[index].complete = !updatedTask[index].complete;
@@ -58,7 +55,7 @@ const TaskMain:React.FC = () => {
 
     return(
         <>
-            <div className="md:grid md:grid-cols-2 md:gap-3">
+            <div className="md:grid md:grid-cols-2 md:gap-3 ">
                 <div className=" right md:order-2">
                     <div className="rounded-lg  bg-[#002b59] py-3 px-10 mb-5 text-xl text-center text-white font-bold">Planner</div>
                     <div className="">
@@ -66,7 +63,9 @@ const TaskMain:React.FC = () => {
                     </div>
                 </div>
                 <div className="md:order-1">
-                    <TaskList tasks={tasks} onCompleteToggle={toggleComplete} />
+                    <div className=" md:h-[70vh]  overflow-auto overflow-x-hidden bg-gradient-to-b from-transparent to-transparent">
+                        <TaskList tasks={tasks} onCompleteToggle={toggleComplete} />
+                    </div>
                 </div>
             </div>
         </>
