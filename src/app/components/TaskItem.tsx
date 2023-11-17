@@ -9,13 +9,13 @@ interface TaskItemProps {
 
 const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onCompleteToggle }) => {
     return (
-        <li className="flex justify-between border-2 border-pink-100 m-3 p-3">
-            <div className="flex justify-between ">
-                <div style={{ marginRight: '20px' }}>Task: {text}</div>
-                <div style={{ marginRight: '20px' }}>Date: {date}</div>
+        <li className="flex flex-col justify-between border-2 rounded-xl border-pink-100 p-2 my-2">
+            <div className="flex-1 p-1">
+                <div >{text}</div>
             </div>
-            <div>Completed: 
-                <input type="checkbox" checked={complete} onChange={onCompleteToggle}/>
+            <div className="flex justify-between">
+                <div className="p-1">Date: {date}</div>
+                <div className="p-1">Completed: <input type="checkbox" checked={complete} onChange={onCompleteToggle}/></div>   
             </div> 
         </li>
     );

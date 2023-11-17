@@ -17,7 +17,7 @@ interface ObjectType {
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
     return (
-        <ul>
+        <ul> 
             {tasks.map((task, index) => (
                 <TaskItem
                 key={index}
