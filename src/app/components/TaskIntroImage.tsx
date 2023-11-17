@@ -8,8 +8,8 @@ const TaskIntroImage:React.FC = () => {
         <Image
             src="/graphics/arrows.svg"
             alt="Intro image"
-            width={800}
-            height={500}
+            width={326}
+            height={291}
             />
     )
 }

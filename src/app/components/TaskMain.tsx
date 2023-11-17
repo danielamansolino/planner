@@ -61,7 +61,6 @@ const TaskMain:React.FC = () => {
         setTasks(updatedTask);
     } 
 
-
     return(
         <>
             <div className="md:grid md:grid-cols-2 md:gap-3 ">
@@ -72,15 +71,15 @@ const TaskMain:React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-3 md:mt-0 md:order-1">
-                    { typeof tasks !== undefined && tasks.length == 0 && windowSize.width > 769
-                    ?
-                    <div className=" md:h-[70vh]">
-                        <TaskIntroImage />
-                    </div>
-                    :
-                    <div className=" md:h-[70vh] overflow-auto overflow-x-hidden">
-                        <TaskList tasks={tasks} onCompleteToggle={toggleComplete} onDeleteEntry={deleteEntry}/>
-                    </div>
+                    { typeof tasks !== undefined && tasks.length == 0 && windowSize.width > 768
+                        ?
+                            <div className=" md:h-[70vh] flex justify-end items-start">
+                                <TaskIntroImage />
+                            </div>
+                        :
+                            <div className=" md:h-[70vh] overflow-auto overflow-x-hidden">
+                                <TaskList tasks={tasks} onCompleteToggle={toggleComplete} onDeleteEntry={deleteEntry}/>
+                            </div>
                     }
                 </div>
             </div>
