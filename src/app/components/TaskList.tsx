@@ -20,11 +20,11 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
         <ul> 
             {tasks.map((task, index) => (
                 <TaskItem
-                key={index}
-                text={task.text}
-                date={task.date}
-                complete={task.complete}
-                onCompleteToggle={() => onCompleteToggle(index)}
+                    key={index}
+                    text={task.text}
+                    date={task.date}
+                    complete={task.complete}
+                    onCompleteToggle={() => onCompleteToggle(index)}
                 />
             ))}
         </ul>

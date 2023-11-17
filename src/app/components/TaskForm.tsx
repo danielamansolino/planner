@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { itemSetter } from "../../utilities/localStorage-utility";
+import TextAreaResize from "./TextAreaResize";
 
 interface TaskFormProps {
     onTaskAdd: (data: ObjectType) => void;
@@ -29,21 +30,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
             complete: false,
             creationDate: creationDateTimeStr
         };
-
         onTaskAdd(data);
+        setTask("")
     };
 
     return (
         <>
             <form onSubmit={handleSubmit} className="flex flex-col  gap-2 ">
                 <div className="flex-1 ">
-                    <textarea
-                        className="taskinput text-black w-full resize-y"
-                        type="text"
-                        value={task}
-                        onChange={(e) => setTask(e.target.value)}
-                        placeholder="Enter task"
-                        />  <br />
+                    <TextAreaResize task={task} setTask={setTask} />
+                        <br />
                 </div>
                 <div className="flex justify-between gap-2">
                     <input
