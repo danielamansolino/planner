@@ -27,7 +27,12 @@ const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onCompleteTog
     return (
         <li className="flex flex-col justify-between border-2 rounded-xl border-pink-100 p-2 mb-2">
             <div className="flex-1 p-1">
-                <div >{text}</div>
+                <div >{text.split('\n').map((line, index) => (
+                    <React.Fragment key={index}>
+                    {line}
+                    <br />
+                    </React.Fragment>))}
+                </div>
             </div>
             <div className="flex justify-between">
                 <div className="p-1">Date: {date}</div>

@@ -12,7 +12,7 @@ interface TaskFormProps {
 const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const [task, setTask] = useState<string>("");
     const [date, setDate] = useState<string>(currentDate());
-    
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (task.trim() === "" || date === "") return;
@@ -28,9 +28,20 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
         setTask("");
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if ((e.metaKey || e.shiftKey) && e.key == 'Enter'){
+            e.preventDefault();
+            setTask((task) => task + '\n');   
+        }
+        else if (e.key == 'Enter') {
+            e.preventDefault();
+            handleSubmit(e);
+        }
+    }
+
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex flex-col  gap-2 ">
+            <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}  className="flex flex-col  gap-2 ">
                 <div className="flex-1 ">
                     <TextAreaResize task={task} setTask={setTask} />
                         <br />
@@ -46,6 +57,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
                     <button
                         type="submit"
                         className="bg-[#a7d2ff] text-[#002b59] py-1 px-5 rounded-md hover:cursor-pointer"
+
                         >
                         Add task
                     </button>

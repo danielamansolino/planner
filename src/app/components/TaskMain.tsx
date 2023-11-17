@@ -57,7 +57,7 @@ const TaskMain:React.FC = () => {
         const updatedTask = [...tasks.slice(0, index), ...tasks.slice(index + 1)];
         setTasks(updatedTask);
     } 
-
+    console.log(tasks)
     return(
         <>
             <div className="md:grid md:grid-cols-2 md:gap-3 ">
