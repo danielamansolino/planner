@@ -6,12 +6,14 @@ import TaskForm from './TaskForm'
 import { itemGetter } from "../../utilities/localStorage-utility";
 import { itemSetter } from "../../utilities/localStorage-utility";
 import { ObjectType } from "../../utilities/task-utility"
-
-// { text: string, date: string, complete: boolean, creationDate: string; }
+import TaskIntroImage from './TaskIntroImage';
+import DetectWindowSize from '../state/hooks/DetectWindowSize';
 
 const TaskMain:React.FC = () => {
     const [tasks, setTasks] = useState<ObjectType[]>([]);
-    
+
+    const windowSize = DetectWindowSize()
+
     // useEffect to fetch data from local storage, when the component mounts.
     useEffect(() => {
         const fetchData = async () => {
@@ -59,6 +61,7 @@ const TaskMain:React.FC = () => {
         setTasks(updatedTask);
     } 
 
+
     return(
         <>
             <div className="md:grid md:grid-cols-2 md:gap-3 ">
@@ -69,9 +72,16 @@ const TaskMain:React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-3 md:mt-0 md:order-1">
-                    <div className=" md:h-[70vh] overflow-auto overflow-x-hidden bg-gradient-to-b from-transparent to-transparent">
+                    { typeof tasks !== undefined && tasks.length == 0 && windowSize.width > 769
+                    ?
+                    <div className=" md:h-[70vh]">
+                        <TaskIntroImage />
+                    </div>
+                    :
+                    <div className=" md:h-[70vh] overflow-auto overflow-x-hidden">
                         <TaskList tasks={tasks} onCompleteToggle={toggleComplete} onDeleteEntry={deleteEntry}/>
                     </div>
+                    }
                 </div>
             </div>
         </>
