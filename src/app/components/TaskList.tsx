@@ -6,10 +6,12 @@ import { ObjectType } from "../../utilities/task-utility"
 
 interface TaskListProps {
     tasks: ObjectType[];
-     onCompleteToggle: (index: number) => void;
+    onCompleteToggle: (index: number) => void;
+    onDeleteEntry: (index: number) => void;
+
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
+const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle, onDeleteEntry }) => {
     return (
         <ul> 
             {tasks.map((task, index) => (
@@ -19,6 +21,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onCompleteToggle }) => {
                     date={task.date}
                     complete={task.complete}
                     onCompleteToggle={() => onCompleteToggle(index)}
+                    onDeleteEntry={() => onDeleteEntry(index)}
                 />
             ))}
         </ul>

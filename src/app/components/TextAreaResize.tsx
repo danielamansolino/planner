@@ -6,7 +6,6 @@ interface TextAreaProps {
 }
 
 const TextAreaResize: React.FC<TextAreaProps> = ({ task, setTask}) => {
-
     const handleChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         setTask(e.target.value);
     };

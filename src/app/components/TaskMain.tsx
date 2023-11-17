@@ -51,7 +51,12 @@ const TaskMain:React.FC = () => {
         const updatedTask = [...tasks];
         updatedTask[index].complete = !updatedTask[index].complete;
         setTasks(updatedTask);
-     } 
+    } 
+
+    const deleteEntry = (index: number) => {
+        const updatedTask = [...tasks.slice(0, index), ...tasks.slice(index + 1)];
+        setTasks(updatedTask);
+    } 
 
     return(
         <>
@@ -64,7 +69,7 @@ const TaskMain:React.FC = () => {
                 </div>
                 <div className="md:order-1">
                     <div className=" md:h-[70vh]  overflow-auto overflow-x-hidden bg-gradient-to-b from-transparent to-transparent">
-                        <TaskList tasks={tasks} onCompleteToggle={toggleComplete} />
+                        <TaskList tasks={tasks} onCompleteToggle={toggleComplete} onDeleteEntry={deleteEntry}/>
                     </div>
                 </div>
             </div>
