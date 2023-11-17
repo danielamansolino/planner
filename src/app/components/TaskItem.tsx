@@ -17,6 +17,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ text, date, complete, onCompleteTog
             </div>
             <div className="flex justify-between">
                 <div className="p-1">Date: {date}</div>
+                { complete &&
+                <div className="p-1 text-red-400">Delete</div>
+                }
                 <div className="p-1">Completed: <input type="checkbox" checked={complete} onChange={onCompleteToggle}/></div>   
             </div> 
         </li>

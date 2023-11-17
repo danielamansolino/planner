@@ -15,7 +15,6 @@ export const itemSetter = (key: StorageKey, data: ObjectArray) => {
 export const itemGetter = (key: StorageKey) => {
     try {
         const serializedData = localStorage.getItem(key);
-        console.log(serializedData)
         if (serializedData === null) {
             console.log("null")
             return null;

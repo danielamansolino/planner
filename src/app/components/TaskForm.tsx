@@ -3,17 +3,20 @@
 import React, { useState } from "react";
 import TextAreaResize from "./TextAreaResize";
 import { ObjectType } from "../../utilities/task-utility"
+import { currentDate } from "../../utilities/date-utility"
 
 interface TaskFormProps {
     onTaskAdd: (data: ObjectType) => void;
 }
 
-
+// const currentDate = new Date()
+// const offset = currentDate.getTimezoneOffset();
+// const currDatecurrTZ  = new Date(currentDate.getTime() - (offset*60*1000)); 
+// const dateString = currDatecurrTZ.toISOString().split('T')[0]
 
 const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const [task, setTask] = useState<string>("");
-    const [date, setDate] = useState<string>("");
-
+    const [date, setDate] = useState<string>(currentDate());
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (task.trim() === "" || date === "") return;
