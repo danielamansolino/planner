@@ -7,12 +7,12 @@ import { itemGetter } from "../../utilities/localStorage-utility";
 import { itemSetter } from "../../utilities/localStorage-utility";
 import { ObjectType } from "../../utilities/task-utility"
 import TaskIntroImage from './TaskIntroImage';
-import DetectWindowSize from '../state/hooks/DetectWindowSize';
+import useDetectWindowSize from '../state/hooks/useDetectWindowSize';
 
 const TaskMain:React.FC = () => {
     const [tasks, setTasks] = useState<ObjectType[]>([]);
-
-    const windowSize = DetectWindowSize()
+    
+    const windowSize = useDetectWindowSize()
 
     // useEffect to fetch data from local storage, when the component mounts.
     useEffect(() => {
