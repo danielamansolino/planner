@@ -53,22 +53,23 @@ const TaskMain:React.FC = () => {
         setTasks(updatedTask);
     } 
 
+    // deleteEntry() deletes the entry located in the TaskList comp, and found in the TaskItem comp. 
     const deleteEntry = (index: number) => {
         const updatedTask = [...tasks.slice(0, index), ...tasks.slice(index + 1)];
         setTasks(updatedTask);
     } 
-    console.log(tasks)
+
     return(
         <>
             <div className="md:grid md:grid-cols-2 md:gap-3 ">
-                <div className=" right md:order-2">
+                <div className=" md:order-2 ">
                     <div className="rounded-lg  bg-[#002b59] py-3 px-10 mb-5 text-xl text-center text-white font-bold">Planner</div>
                     <div className="">
                         <TaskForm onTaskAdd={addTask} />
                     </div>
                 </div>
-                <div className="md:order-1">
-                    <div className=" md:h-[70vh]  overflow-auto overflow-x-hidden bg-gradient-to-b from-transparent to-transparent">
+                <div className="mt-3 md:mt-0 md:order-1">
+                    <div className=" md:h-[70vh] overflow-auto overflow-x-hidden bg-gradient-to-b from-transparent to-transparent">
                         <TaskList tasks={tasks} onCompleteToggle={toggleComplete} onDeleteEntry={deleteEntry}/>
                     </div>
                 </div>

@@ -31,11 +31,11 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if ((e.metaKey || e.shiftKey) && e.key == 'Enter'){
             e.preventDefault();
-            setTask((task) => task + '\n');   
+            handleSubmit(e);
         }
         else if (e.key == 'Enter') {
             e.preventDefault();
-            handleSubmit(e);
+            setTask((task) => task + '\n');   
         }
     }
 

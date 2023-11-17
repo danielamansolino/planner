@@ -17,7 +17,7 @@ const TextAreaResize: React.FC<TextAreaProps> = ({ task, setTask}) => {
     return (
         <>
             <textarea 
-                className=" text-black w-full resize-y "
+                className=" text-black w-full resize-y  p-1"
                 value={task}
                 onChange={handleChange}
                 rows={calculateRows(task)}
