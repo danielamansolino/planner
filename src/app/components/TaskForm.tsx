@@ -1,71 +1,67 @@
 "use client"; 
 
-
 import React, { useState } from "react";
-import { itemSetter } from "../../utilities/localStorage-utility";
-
+import TextAreaResize from "./TextAreaResize";
+import { ObjectType } from "../../utilities/task-utility"
+import { currentDate } from "../../utilities/date-utility"
 
 interface TaskFormProps {
-    tasks: ObjectType[];
-    onTaskAdd: (task: string, date: string) => void;
+    onTaskAdd: (data: ObjectType) => void;
 }
 
-interface ObjectType {
-    text: string;
-    date: string | Date;
-    complete: boolean;
-}
-
-const TaskForm: React.FC<TaskFormProps> = ({  onTaskAdd }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdd }) => {
     const [task, setTask] = useState<string>("");
-    const [date, setDate] = useState<string>("");
+    const [date, setDate] = useState<string>(currentDate());
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (task.trim() === "" || date === "") return;
-
+        const creationDateTime = new Date();
+        const creationDateTimeStr = creationDateTime.toISOString();
         const data = {
-            task: task,
+            text: task,
             date: date,
+            complete: false,
+            creationDate: creationDateTimeStr
         };
-
-        itemSetter("user", data)
-
-        onTaskAdd(task, date);
-        // setTask("");
-        // setDate("");
-    
+        onTaskAdd(data);
+        setTask("");
     };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if ((e.metaKey || e.shiftKey) && e.key == 'Enter'){
+            e.preventDefault();
+            handleSubmit(e);
+        }
+        else if (e.key == 'Enter') {
+            e.preventDefault();
+            setTask((task) => task + '\n');   
+        }
+    }
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex  flex-col items-center">
-                <input
-                className="taskText text-black"
-                type="text"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                placeholder="Enter task"
-                />  <br />
-                <input
-                className="date text-black"
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                placeholder="Select a date"
-                />  <br />
-                <button
-                type="submit"
-                style={{
-                    backgroundColor: "#a7d2ff",
-                    color: "#002b59",
-                    padding: "10px 15px",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                }}
-                >
-                Add task
-                </button>
+            <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}  className="flex flex-col  gap-2 ">
+                <div className="flex-1 ">
+                    <TextAreaResize task={task} setTask={setTask} />
+                        <br />
+                </div>
+                <div className="flex justify-between gap-2">
+                    <input
+                        className="date text-black"
+                        type="date"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        placeholder="Select a date"
+                        />  <br />
+                    <button
+                        type="submit"
+                        className="bg-[#a7d2ff] text-[#002b59] py-1 px-5 rounded-md hover:cursor-pointer"
+
+                        >
+                        Add task
+                    </button>
+                </div>
             </form>
         </>
     );
