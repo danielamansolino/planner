@@ -1,17 +1,16 @@
 import React from 'react';
 import TaskMain from './components/TaskMain';
 
-
 const Page:React.FC =() => {
-  
-  return (
-    <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1 style={{ fontSize: '3em', background: '#002b59', padding: '10px', color: '#fff' }}>Planner</h1>
-        <TaskMain/>
-      </main>
-    </>
-  )
+    return (
+        <>
+            <div className=" flex flex-col items-center justify-between pt-24 m-5 ">
+                <div className="border-2 border-red-300 rounded-2xl p-4 md:w-[700px] w-full lg:w-[900px]">
+                    <TaskMain/>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default Page;
