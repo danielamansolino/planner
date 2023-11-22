@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import { useTheme } from "next-themes";
-import data from "../../data/data.json";
+import data from "../../data/planner.json";
 
 // Declare an interface for the JSX.IntrinsicElements
 interface IntrinsicElements {

@@ -63,6 +63,7 @@ const TaskMain:React.FC = () => {
 
     return(
         <>
+                   
             <div className="md:grid md:grid-cols-2 md:gap-3 ">
                 <div className=" md:order-2 ">
                     <div className="rounded-lg  bg-[#002b59] py-3 px-10 mb-5 text-xl text-center text-white font-bold">Planner</div>

@@ -3,14 +3,14 @@ import { Popover } from "@headlessui/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import Button from "../Button/button";
-import data from "../../data/data.json";
+import data from "../../data/planner.json";
 
 interface HeaderProps {
   // We can add about if we want or other link for our nav bar here
 }
 
 const Header: React.FC<HeaderProps> = () => {
-  const router = useRouter();
+//   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -73,7 +73,6 @@ const Header: React.FC<HeaderProps> = () => {
               } shadow-md rounded-md`}
             >
               <div className="grid grid-cols-1">
-                <Button onClick={() => router.push("/")}>Home</Button>
                 {mounted && theme && data.darkMode && (
                   <Button
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -85,7 +84,7 @@ const Header: React.FC<HeaderProps> = () => {
                     ></img>
                   </Button>
                 )}
-                {/* You can add more buttons for other sections or links as needed */}
+
               </div>
             </Popover.Panel>
           </>
@@ -102,7 +101,6 @@ const Header: React.FC<HeaderProps> = () => {
           className="cursor-pointer mob:p-2 laptop:p-0"
         />
         <div className="flex">
-          <Button onClick={() => router.push("/")}>Home</Button>
           {mounted && theme && data.darkMode && (
             <Button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
